@@ -1,11 +1,11 @@
 Summary:	Evented I/O for V8 javascript
 Name:		nodejs
-Version:	0.10.29
+Version:	0.10.32
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
-# Source0-md5:	e14ea9f46f9beecdf4e9423fb626c70b
+# Source0-md5:	f5fd3a03948ec5d12b49fdc7c49a5cac
 BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkg-config
