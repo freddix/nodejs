@@ -1,11 +1,11 @@
 Summary:	Evented I/O for V8 javascript
 Name:		nodejs
-Version:	0.10.32
+Version:	0.10.33
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
-# Source0-md5:	f5fd3a03948ec5d12b49fdc7c49a5cac
+# Source0-md5:	626ca8a4f8fec4df49c78ed53d46f1f7
 BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkg-config
@@ -22,11 +22,15 @@ I/O and a single-threaded event loop.
 %prep
 %setup -qn node-v%{version}
 
-grep -r '#!.*env python' -l . | xargs %{__sed} -i -e '1 s,#!.*env python,#!%{__python},'
+# kill /usr/bin/env
+grep -r '#!.*env python' -l . | \
+    xargs %{__sed} -i -e '1 s,#!.*env python,#!%{__python},'
 
 %build
 export CC="%{__cc}"
 export CXX="%{__cxx}"
+export CXXFLAGS="%{rpmcxxflags}"
+export LDFLAGS="%{rpmldflags}"
 ./configure \
 	--prefix=%{_prefix}	\
 	--shared-openssl	\
